@@ -1,0 +1,23 @@
+<router-outlet></router-outlet>
+
+
+<div class="container">
+  <h1>Login</h1>
+
+  <form [formGroup]="form" (ngSubmit)="onLogin()">
+    <mat-form-field style="margin-right: 5px; margin-left: 55px">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username">
+    </mat-form-field>
+
+    <mat-form-field style="margin-right: 5px">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" style="margin-bottom: 15px" type="submit">Login</button>
+  </form>
+
+  <div>Don't have an account? <a routerLink='/signup'>Sign up here!</a></div>
+
+</div>

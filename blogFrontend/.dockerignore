@@ -1,0 +1,6 @@
+
+# Docker doesn't need to copy these when creating the container
+.angular/
+.vscode/
+dist/
+node_modules/

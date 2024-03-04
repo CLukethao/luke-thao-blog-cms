@@ -1,0 +1,21 @@
+
+<form [formGroup]="form" (ngSubmit)="OnSubmit()">
+  <mat-card>
+    <mat-card-header class="header">
+      <mat-card-title>Send Message to {{data.recipientUsername}}</mat-card-title>
+      <button mat-icon-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="form-container">
+
+        <mat-form-field>
+          <textarea matInput placeholder="Write Message" formControlName="message" rows="2"></textarea>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</form>

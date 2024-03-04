@@ -1,0 +1,15 @@
+<router-outlet></router-outlet>
+
+
+<div class="container">
+  <h1>Community</h1>
+
+  <div class="user-container" *ngFor="let user of userList">
+    <div class="border-black" *ngIf="user.id !== userId">
+      <span style="margin-left: 50px; margin-right: 10px">{{user.username}}</span>
+      <button *ngIf="userId" mat-button (click)="OnSendMessage(user.id!, user.username!)"><mat-icon fontIcon="message"></mat-icon></button>
+    </div>
+  </div>
+
+</div>
+

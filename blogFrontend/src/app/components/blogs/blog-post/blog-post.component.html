@@ -1,0 +1,41 @@
+
+<div class="container">
+  <div class="background">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          {{blog.title}}
+        </mat-card-title>
+        <span class="spacing"></span>
+        <button *ngIf="userId === blog.author.id" mat-raised-button color="accent" style="margin-right: 5px" (click)="OnEdit()">Edit</button>
+        <button *ngIf="userId === blog.author.id" mat-raised-button color="warn" (click)="OnDelete()">delete</button>
+        <mat-card-subtitle>{{blog.author.username + " "}}<span style="font-size: small">{{(blog.date | date:'short')}}</span></mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ blog.description }}</p>
+
+        <div style="font-weight: bold">{{"Views: " + blog.views.length + " Comments: " + blog.comments.length}}</div>
+      </mat-card-content>
+
+      <mat-card-footer style="margin-bottom: 15px;">
+        <mat-form-field style="margin: 15px; width: 80%" *ngIf="userId">
+          <textarea matInput placeholder="What are your thoughts?" rows="3" [(ngModel)]=comment></textarea>
+        </mat-form-field>
+
+        <button *ngIf="userId" mat-raised-button color="primary" (click)="OnSubmit()">Submit</button>
+
+        <div class="border-black" *ngFor="let comment of blog.comments">
+          <span style="font-weight: bold">{{comment.user + " "}}</span>
+          <span style="font-size: small">{{(comment.date | date:'short')}}</span>
+
+          <!--          <button style="float: right" mat-raised-button color="warn">Delete</button>-->
+
+          <p>{{comment.comment}}</p>
+        </div>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>
+
+
+

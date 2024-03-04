@@ -1,0 +1,38 @@
+<div class="container">
+  <h1>{{conversation.participant1 === username ? conversation.participant2 : conversation.participant1}}</h1>
+
+
+  <div class="message-container" *ngFor="let message of conversation.messages">
+    <mat-card class="border-blue" *ngIf="message.author === username">
+      <mat-card-header>
+        <mat-card-title>{{message.author}}</mat-card-title>
+        <mat-card-subtitle>{{message.date | date:'short'}}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        {{message.message}}
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="border-white" *ngIf="message.author !== username">
+      <mat-card-header>
+        <mat-card-title>{{message.author}}</mat-card-title>
+        <mat-card-subtitle>{{message.date | date:'short'}}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        {{message.message}}
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div>
+    <mat-form-field style="width: 400px; margin-top: 15px; margin-left: 105px; margin-right: 5px;">
+      <textarea matInput placeholder="Message" rows="3" [(ngModel)]=message></textarea>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="OnSubmit()">Submit</button>
+  </div>
+
+
+</div>

@@ -1,0 +1,50 @@
+version: '3.9'
+
+services:
+  # "database" is semantic, it can be any name
+  database:
+    image: "postgres:alpine3.19"
+    # container_name appears in terminal and in Docker Desktop as the name for the container
+    container_name: postgres-database
+    # WARNING: I DON'T KNOW HOW TO MANAGE SECURITY
+    env_file:
+      - .env
+    # ports defines what is exposed to the to [local machine]: (from)[docker container]
+    ports:
+      - "5432:5432"
+    # manage database data inline with your project(see note below in this md file)
+    volumes:
+      - ./database/data:/var/lib/postgresql/data
+    # this health check ensures the database files have been completed in the initial spin
+    # up of the database. Subsequent uses the database is already established, and it doesn't matter.
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d postgres"]
+      interval: 3s
+      retries: 15
+
+  backend:
+    container_name: spring-backend
+    build:
+      context: backend/
+    ports:
+      - "8080:8080"
+    # WARNING: I DON'T KNOW HOW TO MANAGE SECURITY
+    env_file:
+      - .env
+    environment:
+      POSTGRES_HOST: postgres
+    depends_on:
+      database:
+        condition: service_healthy
+
+  frontend:
+    container_name: angular-frontend
+    build:
+      context: blogFrontend/
+    depends_on:
+      database:
+        condition: service_healthy
+    ports:
+      - "4200:80"
+
+

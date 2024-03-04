@@ -1,0 +1,32 @@
+
+.container {
+  margin: 0;
+  height: auto;
+  display: flex;
+  justify-content: center;
+
+}
+
+.background {
+  margin-top: 50px;
+  border-radius: 25px;
+  padding: 20px;
+  background: rgb(211, 153, 255);
+  width: 35%;
+  height: 70%;
+}
+
+.border-black {
+  border: 2px solid black;
+  border-radius: 25px;
+  height: 60%;
+  padding: 15px;
+  margin: 15px;
+}
+
+.spacing {
+  flex: 1 1 auto;
+}
+
+
+

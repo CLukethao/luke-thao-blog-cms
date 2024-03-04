@@ -1,0 +1,18 @@
+<router-outlet></router-outlet>
+
+<div class="container">
+  <h1>Messages</h1>
+  <div class="conversation-container" *ngFor="let conversation of conversations">
+    <mat-card class="border-blue" (click)="OnClick(conversation.id)">
+      <mat-card-header>
+        <mat-card-title>{{conversation.participant1 === username ? conversation.participant2 : conversation.participant1}}</mat-card-title>
+        <mat-card-subtitle>{{conversation.date | date:'short'}}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        {{conversation.messages[conversation.messages.length - 1].message}}
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+

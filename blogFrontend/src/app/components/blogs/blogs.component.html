@@ -1,0 +1,33 @@
+
+<router-outlet></router-outlet>
+
+<div class="container">
+  <h1>Blogs</h1>
+
+  <div style="width: 100%;">
+    <button *ngIf="userId" mat-raised-button color="primary" style="align-self: start; margin-left: 220px; margin-bottom: 10px" (click)="OnAddBlog()">Create New Blog</button>
+
+    <mat-form-field style="float: right; margin-right: 217px">
+      <mat-label>Sort By</mat-label>
+      <mat-select [(value)]="sortBy" (selectionChange)="OnSort()">
+        <mat-option value="old">Old</mat-option>
+        <mat-option value="new">New</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <mat-grid-list cols="3" rowHeight="3:1" style="width: 80%">
+    <mat-grid-tile *ngFor="let blog of blogList" (click)="OnClick(blog.id)" style="cursor: pointer">
+      <mat-card style="width: 90%">
+        <mat-card-header>
+          <mat-card-title>{{ blog.title }}</mat-card-title>
+          <mat-card-subtitle>{{blog.author.username+ " " + (blog.date | date:'short')}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{blog.description}}</p>
+          <div style="font-weight: bold">{{"Views: " + blog.views.length + " Comments: " + blog.comments.length}}</div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
