@@ -5,7 +5,7 @@
     <button routerLink="conversations" mat-button>Messages</button>
     <button routerLink="community" mat-button>Community</button>
     <span class="nav-spacing"></span>
-    <span *ngIf="username" style="margin-right: 10px">Hello, {{username}}</span>
+    <span *ngIf="username" style="margin-right: 10px; cursor: pointer" routerLink="profile">{{username}}</span>
     <button *ngIf="username" routerLink="login" mat-raised-button color="warn" (click)="onLogout()">Sign Out</button>
     <button *ngIf="!username" routerLink="login" mat-raised-button>Login</button>
   </mat-toolbar-row>

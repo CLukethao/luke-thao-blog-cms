@@ -9,6 +9,10 @@ export interface BlogInterface {
   id: number,
   title: string,
   views: Array<UserInterface>,
+  fontStyle: string,
+  fontSize: string,
+  backgroundColor: string,
+  fontColor: string
 }
 
 export interface BlogListInterface {

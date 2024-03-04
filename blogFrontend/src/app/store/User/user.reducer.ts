@@ -56,6 +56,12 @@ export const userReducer = createReducer( userState,
     }
   }),
 
+  on(userAuth.userAuthFail, (state, props) => {
+    alert("Invalid Login")
+    return {
+      ...state
+    }
+  }),
 
 
 

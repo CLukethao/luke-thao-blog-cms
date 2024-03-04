@@ -8,14 +8,10 @@ import com.example.backend.RequestParams.EditBlogRequest;
 import com.example.backend.RequestParams.ViewBlogRequest;
 import com.example.backend.User.UserEntity;
 import com.example.backend.User.UserRepository;
-import org.apache.catalina.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -31,7 +27,6 @@ public class BlogService {
         return blogRepository.findAll();
     }
 
-
     public Iterable<BlogEntity> createBlog(CreateBlogRequest request) {
         Optional<UserEntity> userExists = userRepository.findByUsernameIgnoreCase(request.author);
 
@@ -40,7 +35,7 @@ public class BlogService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
 
-        BlogEntity blog = new BlogEntity(request.title, request.description, userExists.get());
+        BlogEntity blog = new BlogEntity(request.title, request.description, userExists.get(), request.backgroundColor, request.fontColor, request.fontSize, request.fontStyle);
 
         blogRepository.save(blog);
 

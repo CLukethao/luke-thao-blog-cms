@@ -13,7 +13,6 @@ import {createComment, deleteBlog, viewBlog} from "../../../store/Blog/blog.acti
 import {FormsModule} from "@angular/forms";
 import {Subscription} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
-import {AddBlogComponent} from "../add-blog/add-blog.component";
 import {EditBlogComponent} from "../edit-blog/edit-blog.component";
 
 @Component({
@@ -39,6 +38,7 @@ export class BlogPostComponent implements OnDestroy, OnInit {
     this.blogId = Number(this.route.snapshot.paramMap.get("id"))
 
     this.blogSub = this.store.select(getBlogById(this.blogId)).subscribe(data => {
+      console.log(data)
       this.blog = data
     })
 

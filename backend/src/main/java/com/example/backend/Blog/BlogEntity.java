@@ -4,8 +4,7 @@ import com.example.backend.Comment.CommentEntity;
 import com.example.backend.User.UserEntity;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import org.apache.catalina.User;
-import org.springframework.cglib.core.Local;
+
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -23,6 +22,11 @@ public class BlogEntity {
 
     LocalDateTime date;
 
+    String backgroundColor;
+    String fontColor;
+    String fontSize;
+    String fontStyle;
+
     @ManyToMany
     @JoinTable(name = "seen_by",
             joinColumns = @JoinColumn(name = "blog_id"),
@@ -38,7 +42,7 @@ public class BlogEntity {
     @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL, orphanRemoval = true)
     List<CommentEntity> comments = new ArrayList<CommentEntity>();
 
-    public BlogEntity(String title, String description, UserEntity user) {
+    public BlogEntity(String title, String description, UserEntity user, String backgroundColor, String fontColor, String fontSize, String fontStyle) {
         this.title = title;
 
         this.description = description;
@@ -48,6 +52,15 @@ public class BlogEntity {
         this.date = LocalDateTime.now();
 
         this.views.add(user);
+
+        this.backgroundColor = backgroundColor;
+
+        this.fontColor = fontColor;
+
+        this.fontSize = fontSize;
+
+        this.fontStyle = fontStyle;
+
     }
 
 
@@ -80,4 +93,12 @@ public class BlogEntity {
     }
 
     public List<CommentEntity> getComments() {return comments; }
+
+    public String getBackgroundColor() {return backgroundColor;}
+
+    public String getFontColor() {return fontColor;}
+
+    public String getFontSize() {return fontSize;}
+
+    public String getFontStyle() {return fontStyle;}
 }

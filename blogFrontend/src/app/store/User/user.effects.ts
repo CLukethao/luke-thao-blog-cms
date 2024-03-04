@@ -24,6 +24,7 @@ export class UserEffects {
             void this.router.navigate(["/blogs"])
             return userAuth.userAuthSuccess(data)
           }),
+
           catchError((error) => of(userAuth.userAuthFail({error: error})))
         )
       })

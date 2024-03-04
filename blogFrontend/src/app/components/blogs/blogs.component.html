@@ -17,11 +17,11 @@
   </div>
 
   <mat-grid-list cols="3" rowHeight="3:1" style="width: 80%">
-    <mat-grid-tile *ngFor="let blog of blogList" (click)="OnClick(blog.id)" style="cursor: pointer">
-      <mat-card style="width: 90%">
+    <mat-grid-tile *ngFor="let blog of blogList" (click)="OnClick(blog.id)" style="cursor: pointer;" >
+      <mat-card [ngStyle]="{'width': '90%', 'background-color': blog.backgroundColor, 'color': blog.fontColor, 'font-family': blog.fontStyle, 'font-size': blog.fontSize+'px'}">
         <mat-card-header>
-          <mat-card-title>{{ blog.title }}</mat-card-title>
-          <mat-card-subtitle>{{blog.author.username+ " " + (blog.date | date:'short')}}</mat-card-subtitle>
+          <mat-card-title [ngStyle]="{'color': blog.fontColor, 'font-family': blog.fontStyle, 'font-size': blog.fontSize+'px'}">{{ blog.title }}</mat-card-title>
+          <mat-card-subtitle [ngStyle]="{'color': blog.fontColor, 'font-family': blog.fontStyle, 'font-size': blog.fontSize+'px'}">{{blog.author.username+ " " + (blog.date | date:'short')}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
           <p>{{blog.description}}</p>

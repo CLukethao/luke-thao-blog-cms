@@ -1,0 +1,32 @@
+<router-outlet></router-outlet>
+
+<div class="container">
+  <h1>{{username}}</h1>
+
+  <div style="width: 100%;">
+    <mat-form-field style="float: right; margin-right: 217px">
+      <mat-label>Sort By</mat-label>
+      <mat-select [(value)]="sortBy" (selectionChange)="OnSort()">
+        <mat-option value="old">Old</mat-option>
+        <mat-option value="new">New</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <mat-grid-list cols="3" rowHeight="3:1" style="width: 80%">
+    <span *ngFor="let blog of userBlogs">
+    <mat-grid-tile *ngIf="blog" (click)="OnClick(blog.id)" style="cursor: pointer">
+      <mat-card style="width: 90%" [ngStyle]="{'background-color': blog.backgroundColor, 'color': blog.fontColor, 'font-family': blog.fontStyle, 'font-size': blog.fontSize+'px'}">
+        <mat-card-header>
+          <mat-card-title [ngStyle]="{'background-color': blog.backgroundColor, 'color': blog.fontColor, 'font-family': blog.fontStyle, 'font-size': blog.fontSize+'px'}">{{ blog.title }}</mat-card-title>
+          <mat-card-subtitle [ngStyle]="{'background-color': blog.backgroundColor, 'color': blog.fontColor, 'font-family': blog.fontStyle, 'font-size': blog.fontSize+'px'}">{{blog.author.username+ " " + (blog.date | date:'short')}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content [ngStyle]="{'background-color': blog.backgroundColor, 'color': blog.fontColor, 'font-family': blog.fontStyle, 'font-size': blog.fontSize+'px'}">
+          <p>{{blog.description}}</p>
+          <div style="font-weight: bold">{{"Views: " + blog.views.length + " Comments: " + blog.comments.length}}</div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    </span>
+  </mat-grid-list>
+</div>

@@ -8,6 +8,7 @@ import {BlogPostComponent} from "./components/blogs/blog-post/blog-post.componen
 import {ConversationComponent} from "./components/conversation/conversation.component";
 import {MessagesComponent} from "./components/conversation/messages/messages.component";
 import {CanActivate} from "./security/auth.guard";
+import {ProfileComponent} from "./components/profile/profile.component";
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'blogs', component: BlogsComponent},
   {path: 'blogs/:id', component: BlogPostComponent},
   {path: 'conversations', component: ConversationComponent, canActivate: [CanActivate]},
+  {path: 'profile', component: ProfileComponent},
   {path: 'conversations/:id', component: MessagesComponent},
   {path: 'community', component: CommunityComponent},
   {path: 'login', component: LoginComponent},

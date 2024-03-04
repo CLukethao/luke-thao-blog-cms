@@ -22,7 +22,7 @@ import {editBlog} from "../../../store/Blog/blog.actions";
 export class EditBlogComponent implements OnInit {
   form = this.fb.nonNullable.group({
     title: ['', Validators.required],
-    description: ['', Validators.required]
+    description: ['', Validators.required],
   });
 
 

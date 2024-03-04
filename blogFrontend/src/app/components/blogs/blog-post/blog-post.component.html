@@ -1,15 +1,15 @@
 
 <div class="container">
   <div class="background">
-    <mat-card>
+    <mat-card [ngStyle]="{'background-color': blog.backgroundColor, 'color': blog.fontColor, 'font-family': blog.fontStyle, 'font-size': blog.fontSize+'px'}">
       <mat-card-header>
-        <mat-card-title>
+        <mat-card-title [ngStyle]="{'background-color': blog.backgroundColor, 'color': blog.fontColor, 'font-family': blog.fontStyle, 'font-size': blog.fontSize+'px'}">
           {{blog.title}}
         </mat-card-title>
         <span class="spacing"></span>
         <button *ngIf="userId === blog.author.id" mat-raised-button color="accent" style="margin-right: 5px" (click)="OnEdit()">Edit</button>
         <button *ngIf="userId === blog.author.id" mat-raised-button color="warn" (click)="OnDelete()">delete</button>
-        <mat-card-subtitle>{{blog.author.username + " "}}<span style="font-size: small">{{(blog.date | date:'short')}}</span></mat-card-subtitle>
+        <mat-card-subtitle [ngStyle]="{'background-color': blog.backgroundColor, 'color': blog.fontColor, 'font-family': blog.fontStyle, 'font-size': blog.fontSize+'px'}">{{blog.author.username + " "}}<span style="font-size: small">{{(blog.date | date:'short')}}</span></mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         <p>{{ blog.description }}</p>

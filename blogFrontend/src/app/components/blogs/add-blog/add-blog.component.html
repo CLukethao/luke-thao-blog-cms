@@ -18,6 +18,32 @@
           <textarea matInput placeholder="Description" formControlName="description" rows="5"></textarea>
         </mat-form-field>
 
+        <mat-form-field>
+          <mat-label>Background Color</mat-label>
+          <input matInput type="color" formControlName="backgroundColor">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Font Color</mat-label>
+          <input matInput type="color" formControlName="fontColor">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Font Size</mat-label>
+          <input matInput type="number" formControlName="fontSize">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Font Type</mat-label>
+          <mat-select [(value)]="fontStyle">
+            <mat-option value="sans-serif">sans-serif</mat-option>
+            <mat-option value="serif">serif</mat-option>
+            <mat-option value="monospace">monospace</mat-option>
+            <mat-option value="cursive">cursive</mat-option>
+            <mat-option value="fantasy">fantasy</mat-option>
+          </mat-select>
+        </mat-form-field>
+
         <button mat-raised-button color="primary" type="submit">Submit</button>
       </div>
     </mat-card-content>
