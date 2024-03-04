@@ -63,6 +63,12 @@ export const userReducer = createReducer( userState,
     }
   }),
 
+  on(userSignUp.userSignupFail, (state, props) => {
+    alert("Username taken")
+    return {
+      ...state
+    }
+  }),
 
 
 )
